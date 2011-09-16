@@ -12,4 +12,8 @@ Diffing two files that are the same
 
 
 Diffing two files one being different
-    Diff Files  ${datadir}${/}loremipsum.txt  ${datadir}${/}loremipsum2.txt
+    Run Keyword And Expect Error  differences*  Diff Files  ${datadir}${/}loremipsum.txt  ${datadir}${/}loremipsum2.txt
+
+
+Diff two files one doesnt exist
+    Run Keyword And Expect Error  *doesn't*  Diff Files  ${datadir}${/}loremipsum.txt  ${datadir}${/}loremipsu.txt

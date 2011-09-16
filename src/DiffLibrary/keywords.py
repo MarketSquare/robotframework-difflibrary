@@ -22,8 +22,6 @@ class DiffKeywords(object):
         diff = 'diff --strip-trailing-cr'
         if 'win' in sys.platform:
             diff = "%s --strip-trailing-cr " %os.path.join(self.root, 'bin', 'diff', 'diff.exe')
-        elif 'sun' in sys.platform:
-            diff = 'diff -bi'
         return diff
 
     
@@ -87,14 +85,14 @@ class DiffKeywords(object):
 
         # the reference file is gzip'ed
         tempfile = None
-        if reffile.endswith('gz'):
-            # unzip the gzip file into a temporary file
-            tempfile = NamedTemporaryFile(delete=False, dir=self.get_temp_dir())
-            for l in gzip.open(reffile).readlines():
-                tempfile.write(l.replace('\r\n', '\n'))
-            tempfile.close()
-            print "tempfile: ", tempfile.name
-            reffile = tempfile.name
+        #if reffile.endswith('gz'):
+        #    # unzip the gzip file into a temporary file
+        #    tempfile = NamedTemporaryFile(delete=False, dir=self.get_temp_dir())
+        #    for l in gzip.open(reffile).readlines():
+        #        tempfile.write(l.replace('\r\n', '\n'))
+        #    tempfile.close()
+        #    print "tempfile: ", tempfile.name
+        #    reffile = tempfile.name
 
 
         # construct the diff command
