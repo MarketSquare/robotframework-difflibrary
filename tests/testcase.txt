@@ -1,0 +1,15 @@
+*** Settings ***
+Library  Collections
+Library  String
+Library  DiffLibrary
+
+*** Variables ***
+${datadir}  ${CURDIR}${/}data
+
+*** Test Cases ***
+Diffing two files that are the same
+    Diff Files  ${datadir}${/}loremipsum.txt  ${datadir}${/}loremipsum.txt
+
+
+Diffing two files one being different
+    Diff Files  ${datadir}${/}loremipsum.txt  ${datadir}${/}loremipsum2.txt
