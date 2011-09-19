@@ -33,8 +33,11 @@ class DiffKeywords(object):
         ''' compare two sxv4dump files
 
         *actfile:* sxv4dump file created in latest build
+
         *reffile:* reference sxv4dump file, gzipped
+
         *diff_file_path:* absolute path of directory to save the diff delta
+
         *diff_cmd:* custom diff command'''
 
         diff_types = {'_getdiff': self._getdiff, '_getndiff': self._getndiff}
@@ -130,17 +133,25 @@ class DiffKeywords(object):
 
     def diff_files(self, file1, file2, fail=True):
         ''' Diff two text files
-        fail: If there are differences it will throw an exception and test will fail
-              defaults to True, if False test's will continue '''
 
-        print "file1: ", file1
-        print "file2: ", file2
+        `file1`: absolute path to the first first file
+
+        `file2`: absolute path to the first second file
+
+        `fail`:  If there are differences it will throw an exception and test will fail
+                 defaults to True, if False test's will continue '''
+
+        self.builtin.log("file1: %s" %file1)
+        self.builtin.log("file2: %s" %file2)
 
         fail = self.builtin.convert_to_boolean(fail)
         if fail:
             self._newdiff(file1, file2)
         else:
-            self._newdiff(file1, file2)
+            try:
+                self._newdiff(file1, file2)
+            except Exception, e:
+                self.builtin.log(e)
 
 
     def _run(self, cmd):
