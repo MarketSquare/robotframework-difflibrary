@@ -31,5 +31,6 @@ setup(name         = 'robotframework-difflibrary',
       classifiers  = CLASSIFIERS.splitlines(),
       package_dir  = {'' : 'src'},
       packages     = ['DiffLibrary'],
-      #package_data = {'DiffLibrary': ['tests/*.txt']}
-      )
+      package_data = {'DiffLibrary': ['tests/*.txt',
+                                      'bin/diff/*.*']}
+)
