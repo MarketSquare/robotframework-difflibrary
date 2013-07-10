@@ -14,28 +14,13 @@ Install robotframework-difflibrary
 Usage
 =====
 
-
-<table border=1>
-    <tr>
-        <td>Settings</td>
-    </tr>
-    <tr>
-        <td> Library </td>
-        <td> DiffLibrary</td>
-    </tr>
-
-    <tr>
-        <td>Test Cases</td>
-    </tr>
-
-    <tr>
-        <td> Diff Two identical files </td>
-    <tr>
-        <td></td>
-        <td> Diff Files  </td>
-        <td>loremipsum.txt  </td>
-    </tr>
-</table>
+|                           |              |                 |                 |
+| :------------------------ | :----------- | :-------------- | :-------------- |
+| Settings                  |              |                 |                 |
+| Library                   | DiffLibrary  |                 |                 |
+| Test Cases                |              |                 |                 |
+| Diff Two Identical Files  |              |                 |                 |
+|                           | Diff Files   | loremipsum.txt  | loremipsum.txt  |
 
 
 DiffLibrary uses the external diff executable that is avaible on most Linux systems
