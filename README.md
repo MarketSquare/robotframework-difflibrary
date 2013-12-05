@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/bulkan/robotframework-difflibrary.png?branch=master)](https://travis-ci.org/bulkan/robotframework-difflibrary)
+[![PyPi downloads](https://pypip.in/d/robotframework-difflibrary/badge.png)](https://crate.io/packages/robotframework-difflibrary/)
+
 
 DiffLibrary is a [Robot Framework](http://code.google.com/p/robotframework/)
 test library that will provide keyword functionality to _diff_ two files together
