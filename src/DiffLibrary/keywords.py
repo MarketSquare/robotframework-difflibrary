@@ -20,7 +20,7 @@ class DiffKeywords(object):
         ''' returns path to diff depending on platform '''
 
         diff = 'diff --strip-trailing-cr'
-        if 'win' in sys.platform:
+        if 'win32' in sys.platform:
             diff = "%s --strip-trailing-cr " %os.path.join(self.root, 'bin', 'diff', 'diff.exe')
         return diff
 
