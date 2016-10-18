@@ -1,44 +1,46 @@
-import sys
-import os
-
-import subprocess
-
+#!/usr/bin/env python
 
 from robot.libraries.BuiltIn import BuiltIn
+import os
+import subprocess
+import sys
+
+
 
 class DiffKeywords(object):
     ROBOT_LIBRARY_SCOPE = 'Global'
-
     root = os.path.abspath(os.path.join(__file__, '..'))
-
 
     def __init__(self):
         self.builtin = BuiltIn()
 
-
     def _getdiff(self):
-        ''' returns path to diff depending on platform '''
+        '''
+        returns path to diff depending on platform
+        '''
 
         diff = 'diff --strip-trailing-cr'
         if 'win32' in sys.platform:
-            diff = "%s --strip-trailing-cr " %os.path.join(self.root, 'bin', 'diff', 'diff.exe')
+            diff = "%s --strip-trailing-cr " % os.path.join(self.root, 'bin',
+                                                            'diff', 'diff.exe')
         return diff
 
-    
     def _getndiff(self):
         raise Exception("Not implemented")
 
+    def _newdiff(self, actfile, reffile, diff_func='_getdiff',
+                     diff_params=None, diff_file_path=None, filter=None):
+        '''
+        compare two sxv4dump files
 
-    def _newdiff(self, actfile, reffile, diff_func='_getdiff', diff_params=None, diff_file_path=None, filter=None):
-        ''' compare two sxv4dump files
+        ``actfile:`` sxv4dump file created in latest build
 
-        *actfile:* sxv4dump file created in latest build
+        ``reffile:`` reference sxv4dump file, gzipped
 
-        *reffile:* reference sxv4dump file, gzipped
+        ``diff_file_path:`` absolute path of directory to save the diff delta
 
-        *diff_file_path:* absolute path of directory to save the diff delta
-
-        *diff_cmd:* custom diff command'''
+        ``diff_cmd:`` custom diff command
+        '''
 
         diff_types = {'_getdiff': self._getdiff, '_getndiff': self._getndiff}
         diff_lines = {'_getdiff': 2, '_getndiff': 4}
@@ -101,7 +103,8 @@ class DiffKeywords(object):
         # construct the diff command
         diff_function = diff_types.get(diff_func, '_getdiff')
         if diff_params != None:
-            diff_cmd = '%s %s "%s" "%s"' %(diff_function(), diff_params, actfile, reffile)
+            diff_cmd = '%s %s "%s" "%s"' % (
+            diff_function(), diff_params, actfile, reffile)
         else:
             diff_cmd = '%s "%s" "%s"' %(diff_function(), actfile, reffile)
         output, rc = self._run(diff_cmd)
@@ -127,19 +130,18 @@ class DiffKeywords(object):
         lines_to_skip = diff_lines.get(diff_func, '_getdiff')
         if lines and len(lines) > lines_to_skip:
             print '\n'.join(lines)
-            self.builtin.fail("differences found between %s and %s" %(actfile, reffile))
-
-
+            self.builtin.fail(
+                "differences found between %s and %s" % (actfile, reffile))
 
     def diff_files(self, file1, file2, fail=True):
         ''' Diff two text files
 
-        `file1`: absolute path to the first first file
+        ``file1``: absolute path to the first first file
 
-        `file2`: absolute path to the first second file
+        ``file2``: absolute path to the first second file
 
-        `fail`:  If there are differences it will throw an exception and test will fail
-                 defaults to True, if False test's will continue '''
+        ``fail``:  If there are differences it will throw an exception and test will fail defaults to True, if False test's will continue
+        '''
 
         self.builtin.log("file1: %s" %file1)
         self.builtin.log("file2: %s" %file2)
@@ -162,16 +164,14 @@ class DiffKeywords(object):
         self.builtin.log(cmd)
         #cmd = process_cmd(cmd)
 
-        # run the given command in a child shell process (cmd.exe on win and sh/bash on *nix)
-        self.cmd = subprocess.Popen(cmd + ' 2>&1', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        # run the given command in a child shell process
+        # (cmd.exe on win and sh/bash on *nix)
+        self.cmd = subprocess.Popen(cmd + ' 2>&1', shell=True,
+                                    stdout=subprocess.PIPE,
+                                    stderr=subprocess.STDOUT)
 
         # it will block here and try to read everything into memory
         output = self.cmd.communicate()[0]
 
         return output, self.cmd.wait()
 
-
-
-if __name__ == "__main__":
-    d = DiffKeywords()
-    print d.getdiff()
