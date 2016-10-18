@@ -1,7 +1,8 @@
 *** Settings ***
 Library  Collections
-Library  String
 Library  DiffLibrary
+Library  OperatingSystem
+Library  String
 
 *** Variables ***
 ${datadir}  ${CURDIR}${/}data
@@ -21,3 +22,11 @@ Diff two files one doesnt exist
 
 Diff two files as the second file is different
     Run Keyword And Expect Error  *differences*  Diff Files  ${datadir}/${/}loremipsum.txt  ${datadir}${/}loremipsum3.txt
+
+Diff two files with content as the second file is different
+    ${filename} =  Generate Random String   8  [LOWER]
+    ${content} =  Get File  ${datadir}/loremipsum.txt
+    Create File  ${TEMPDIR}/${filename}.txt  ${content}
+    Run Keyword And Expect Error  *differences*   Diff Files  ${TEMPDIR}/${filename}.txt   ${datadir}/${/}loremipsum3.txt
+    Remove File  ${TEMPDIR}/${filename}.txt
+
