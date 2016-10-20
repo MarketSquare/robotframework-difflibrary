@@ -8,6 +8,13 @@ import sys
 
 
 class DiffKeywords(object):
+    """
+    *** Settings ***
+    Library   DiffLibrary
+    *** Testcases ***
+    Diff Two Identical Files
+        Diff Files  loremipsum.txt  loremipsum.txt
+    """
     ROBOT_LIBRARY_SCOPE = 'Global'
     root = os.path.abspath(os.path.join(__file__, '..'))
 
