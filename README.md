@@ -30,3 +30,10 @@ out of the box. It also comes packaged with GNU diff binaries for Windows. This 
 work around the problem described in the following issue;
 
 http://code.google.com/p/robotframework/issues/detail?id=497
+
+Docs updation
+=============
+
+```Bash
+python -m robot.libdoc src/DiffLibrary/ doc/DiffLibrary.html
+```
