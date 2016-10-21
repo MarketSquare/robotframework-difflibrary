@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/bulkan/robotframework-difflibrary.png?branch=master)](https://travis-ci.org/bulkan/robotframework-difflibrary)
-[![PyPi downloads](https://pypip.in/d/robotframework-difflibrary/badge.png)](https://crate.io/packages/robotframework-difflibrary/)
+[![PyPi downloads](https://img.shields.io/pypi/dm/robotframework-requests.svg)](https://pypi.python.org/pypi/robotframework-difflibrary)
+[![Latest Version](https://img.shields.io/pypi/v/robotframework-requests.svg)](https://pypi.python.org/pypi/robotframework-difflibrary)
+
 
 
 DiffLibrary is a [Robot Framework](http://code.google.com/p/robotframework/)
