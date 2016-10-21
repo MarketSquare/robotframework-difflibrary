@@ -194,11 +194,11 @@ class DiffKeywords(object):
         ``fail``:  If there are differences it will throw an exception and
         test will fail defaults to True, if False test's will continue
         '''
-        file1 = tempfile.NamedTemporaryFile(mode='w', suffix='txt',
+        file1 = tempfile.NamedTemporaryFile(mode='w', suffix='.txt',
                                             delete=False)
         file1.write(text1)
         file1.close()
-        file2 = tempfile.NamedTemporaryFile(mode='w', suffix='txt',
+        file2 = tempfile.NamedTemporaryFile(mode='w', suffix='.txt',
                                             delete=False)
         file2.write(text2)
         file2.close()
