@@ -14,6 +14,9 @@ Install robotframework-difflibrary
 
     pip install -U robotframework-difflibrary
 
+Documentation
+=============
+Documentation for Keywords avaliable here https://bulkan.github.io/robotframework-difflibrary/
 
 Usage
 =====
