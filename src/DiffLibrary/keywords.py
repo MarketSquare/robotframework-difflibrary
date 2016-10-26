@@ -4,6 +4,7 @@ from robot.libraries.BuiltIn import BuiltIn
 import os
 import subprocess
 import sys
+import tempfile
 
 
 
@@ -147,7 +148,8 @@ class DiffKeywords(object):
 
         ``file2``: absolute path to the first second file
 
-        ``fail``:  If there are differences it will throw an exception and test will fail defaults to True, if False test's will continue
+        ``fail``:  If there are differences it will throw an exception and
+        test will fail defaults to True, if False test's will continue
         '''
 
         self.builtin.log("file1: %s" %file1)
@@ -181,4 +183,38 @@ class DiffKeywords(object):
         output = self.cmd.communicate()[0]
 
         return output, self.cmd.wait()
+
+    def diff_outputs(self, text1, text2, fail=True):
+        ''' Diff between target and source texts
+
+        ``text1``: Target output
+
+        ``text2``: Source output
+
+        ``fail``:  If there are differences it will throw an exception and
+        test will fail defaults to True, if False test's will continue
+        '''
+        file1 = tempfile.NamedTemporaryFile(mode='w', suffix='.txt',
+                                            delete=False)
+        file1.write(text1)
+        file1.close()
+        file2 = tempfile.NamedTemporaryFile(mode='w', suffix='.txt',
+                                            delete=False)
+        file2.write(text2)
+        file2.close()
+
+        self.builtin.log("file1: %s" % file1.name)
+        self.builtin.log("file2: %s" % file2.name)
+
+        fail = self.builtin.convert_to_boolean(fail)
+        if fail:
+            self._newdiff(file1.name, file2.name)
+        else:
+            try:
+                self._newdiff(file1, file2)
+            except Exception, e:
+                self.builtin.log(e)
+
+        os.remove(file1.name)
+        os.remove(file2.name)
 

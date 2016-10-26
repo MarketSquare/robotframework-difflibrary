@@ -30,3 +30,7 @@ Diff two files with content as the second file is different
     Run Keyword And Expect Error  *differences*   Diff Files  ${TEMPDIR}/${filename}.txt   ${datadir}/${/}loremipsum3.txt
     Remove File  ${TEMPDIR}/${filename}.txt
 
+Diff two outputs
+    ${text1} =  Get File  ${datadir}/loremipsum.txt
+    ${text2} =  Get File  ${datadir}/loremipsum3.txt
+    Diff Outputs  ${text1}   ${text2}  ${False}
