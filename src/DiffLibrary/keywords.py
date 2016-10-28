@@ -137,7 +137,7 @@ class DiffKeywords(object):
         # because the filter will remove the timestap diff's
         lines_to_skip = diff_lines.get(diff_func, '_getdiff')
         if lines and len(lines) > lines_to_skip:
-            print '\n'.join(lines)
+            print('\n'.join(lines))
             self.builtin.fail(
                 "differences found between %s and %s" % (actfile, reffile))
 
@@ -161,7 +161,7 @@ class DiffKeywords(object):
         else:
             try:
                 self._newdiff(file1, file2)
-            except Exception, e:
+            except Exception as e:
                 self.builtin.log(e)
 
 
@@ -212,7 +212,7 @@ class DiffKeywords(object):
         else:
             try:
                 self._newdiff(file1, file2)
-            except Exception, e:
+            except Exception as e:
                 self.builtin.log(e)
 
         os.remove(file1.name)
