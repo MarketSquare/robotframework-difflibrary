@@ -6,7 +6,7 @@ import subprocess
 import sys
 import tempfile
 
-
+from DiffLibrary.compat import PY3
 
 class DiffKeywords(object):
     """
@@ -181,6 +181,10 @@ class DiffKeywords(object):
 
         # it will block here and try to read everything into memory
         output = self.cmd.communicate()[0]
+
+        if PY3:
+            if isinstance(output, bytes):
+                output = output.decode(encoding='utf-8')
 
         return output, self.cmd.wait()
 
