@@ -1,5 +1,5 @@
 
-from keywords import DiffKeywords
+from .keywords import DiffKeywords
 
 
 class DiffLibrary(DiffKeywords):
