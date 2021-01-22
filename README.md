@@ -16,7 +16,7 @@ Install robotframework-difflibrary
 
 Documentation
 =============
-Documentation for Keywords avaliable here https://bulkan.github.io/robotframework-difflibrary/
+Documentation for Keywords avaliable here https://marketsquare.github.io/robotframework-difflibrary/
 
 Usage
 =====
