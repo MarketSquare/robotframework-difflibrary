@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/bulkan/robotframework-difflibrary.png?branch=master)](https://travis-ci.org/bulkan/robotframework-difflibrary)
-[![PyPi downloads](https://img.shields.io/pypi/dm/robotframework-requests.svg)](https://pypi.python.org/pypi/robotframework-difflibrary)
-[![Latest Version](https://img.shields.io/pypi/v/robotframework-requests.svg)](https://pypi.python.org/pypi/robotframework-difflibrary)
+[![PyPi downloads](https://img.shields.io/pypi/dm/robotframework-difflibrary.svg)](https://pypi.python.org/pypi/robotframework-difflibrary)
+[![Latest Version](https://img.shields.io/pypi/v/robotframework-difflibrary.svg)](https://pypi.python.org/pypi/robotframework-difflibrary)
 
 
 
